@@ -4,8 +4,8 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    min-width: 100vw;
-    min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
     /* overflow: hidden; */
 
 }
@@ -55,4 +55,24 @@ body {
 .btns button:hover {
     font-size: 1.2rem;
     border-bottom: 2px solid #f6f6f6;
+}
+
+.gifs {
+    /* background-color: #14023e; */
+    /* padding: 50px;
+    height: 100vh;
+    width: 100vw; */
+}
+
+.gifsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 150px;
+}
+
+.gifsContainer img {
+    max-width: 200px;
+    max-height: 100px;
 }
