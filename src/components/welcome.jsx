@@ -1,4 +1,4 @@
-function Welcome({ handleEasy }) {
+function Welcome({ handleEasy, handleMedium, handleHard }) {
 
     return (
         <>
@@ -8,8 +8,8 @@ function Welcome({ handleEasy }) {
                 <h2>Play to save these Damned Souls</h2>
                 <div className="btns">
                     <button onClick={handleEasy}>Easy</button>
-                    <button>Medium</button>
-                    <button>Hard</button>
+                    <button onClick={handleMedium}>Medium</button>
+                    <button onClick={handleHard}>Hard</button>
                 </div>
             </div>
         </>

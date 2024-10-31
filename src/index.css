@@ -64,15 +64,35 @@ body {
     width: 100vw; */
 }
 
+.conta {
+    max-width: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.conta h2 {
+    color: #db2d2d;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+}
+
 .gifsContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 150px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+
 }
 
 .gifsContainer img {
-    max-width: 200px;
-    max-height: 100px;
+    width: 200px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
