@@ -9,9 +9,9 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true)
   const [title, setTitle] = useState('')
-  const [clickedCards, setClickedCard] = useState([])
-  const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(0)
+
+
+
 
 
 
@@ -59,42 +59,49 @@ function App() {
     setTitle("The Disney Memory Game")
   }
 
-  const handleScoreUpdate = (newScore) => {
-    setScore(newScore)
-    if (newScore > highScore) {
-      setHighScore(newScore)
-    }
-  }
-
-  const handleClick = (id) => {
-    console.log(`clicked ${id}`)
-    if (clickedCards.includes(id)) {
-      setScore(0)
-      setClickedCard([])
-    } else {
-      const newScore = score + 1;
-      setClickedCard([...clickedCards, id])
-      reShuffleGifs()
-      handleScoreUpdate(newScore)
-    }
-
-
-
-  };
-
-
-
-  const reShuffleGifs = () => {
+  const reshuffle = () => {
     const shuffled = [...gifs].sort(() => Math.random() - 0.5)
     setGifs(shuffled)
   }
+
+  // const handleScoreUpdate = (newScore) => {
+  //   setScore(newScore)
+  //   if (newScore > highScore) {
+  //     setHighScore(newScore)
+  //   }
+  // }
+
+  // const handleClick = (id) => {
+  //   console.log(`clicked ${id}`)
+  //   if (clickedCards.includes(id)) {
+  //     setScore(0)
+  //     setClickedCard([])
+  //   } else {
+  //     const newScore = score + 1;
+  //     setClickedCard([...clickedCards, id])
+  //     reShuffleGifs()
+  //     handleScoreUpdate(newScore)
+  //   }
+
+
+
+  // };
+
+
+
+  // const reShuffleGifs = () => {
+  //   const shuffled = [...gifs].sort(() => Math.random() - 0.5)
+  //   setGifs(shuffled)
+  // }
 
 
 
   return (
     <>
-      {showWelcome && <Welcome handleEasy={handleEasy} handleMedium={handleMedium} score={score} handleHard={handleHard} handleClick={handleClick} highScore={highScore} />}
-      <Cards gifs={gifs} loading={loading} title={title} />
+      {showWelcome && <Welcome handleEasy={handleEasy} handleMedium={handleMedium} handleHard={handleHard} />}
+      {/* handleClick={handleClick} */}
+      {/* score={score}  highScore={highScore} */}
+      <Cards gifs={gifs} loading={loading} title={title} reshuffle={reshuffle} handleMedium={handleMedium} handleHard={handleHard} handleEasy={handleEasy} />
 
     </>
   )
