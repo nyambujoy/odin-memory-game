@@ -58,7 +58,7 @@ function Cards({ gifs, loading, title, reshuffle,
             {gameStatus === "lost" && <p id="lost">You lose! Try again.</p>}
 
             {(gameStatus === "won" || gameStatus === "lost") && (
-                <div>
+                <div className="buttons">
                     <button onClick={handlePlayAgain}>Play Again</button>
                     <button onClick={handleEasy}>Easy</button>
                     <button onClick={handleMedium}>Medium</button>

@@ -77,7 +77,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
 
 }
 
@@ -102,6 +102,23 @@ body {
     background-color: yellow;
     font-size: 2rem;
 }
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    background-color: #070707;
+
+}
+
+.buttons button {
+    border: none;
+    background-color: transparent;
+    color: #f6f6f6;
+    font-size: 1rem;
+
+
+}
+
 
 
 
