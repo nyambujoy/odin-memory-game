@@ -7,18 +7,20 @@ body {
     width: 100vw;
     height: 100vh;
     /* overflow: hidden; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px;
+
+    /* margin-top: 100px; */
+    transform: translate(-50%, 50%);
 }
 
 .display {
-    max-width: 600px;
+    width: 600px;
     background-color: #070707;
     color: #db2d2d;
     display: flex;
@@ -27,6 +29,10 @@ body {
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
+}
+
+.display h2 {
+    background-color: #f6f6f6;
 }
 
 .display p {
@@ -71,15 +77,33 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
 }
 
-.conta h2 {
-    color: #db2d2d;
-    position: sticky;
-    top: 0;
-    background-color: white;
-    z-index: 10;
+.score {
+    background-color: #070707;
+    color: #f6f6f6;
+    padding: 4px 10px;
+    border-radius: 5px;
 }
+
+.score h4 {
+    color: #db2d2d;
+    text-transform: capitalize;
+}
+
+#status {
+    background-color: green;
+    font-size: 2rem;
+}
+
+#lost {
+    background-color: yellow;
+    font-size: 2rem;
+}
+
+
 
 .gifsContainer {
 

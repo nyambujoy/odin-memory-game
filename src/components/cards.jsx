@@ -1,31 +1,16 @@
 // , handleClick
 // , score, highScore
 import { useState } from "react"
-function Cards({ gifs, loading, title, reshuffle, handleMedium, handleHard, handleEasy }) {
+function Cards({ gifs, loading, title, reshuffle,
+    handleMedium, handleHard, handleEasy, handlePlayAgain,
+    leaveGame, gameStatus, score, clickedCards, setClickedCard,
+    setScore, setGameStatus, showWelcome }) {
 
-    const [clickedCards, setClickedCard] = useState([])
-    const [score, setScore] = useState(0);
+
+
     const [highScore, setHighScore] = useState(0);
-    const [gameStatus, setGameStatus] = useState("ongoing")
-    // const [gameOver, setGameOver] = useState('false')
-
-    const handlePlayAgain = () => {
-        setScore(0);
-        setClickedCard([]);
-        setGameStatus("ongoing");
-        // setGameOver(false)
-        reshuffle();
-    };
-
-    const leaveGame = () => {
-        console.log("quit")
-        setScore(0);
-        setClickedCard([]);
-        setGameStatus("ongoing");
-        // setGameOver(true);
 
 
-    }
 
 
     const handleUpdateScore = (newScore) => {
@@ -55,53 +40,53 @@ function Cards({ gifs, loading, title, reshuffle, handleMedium, handleHard, hand
         }
 
 
+
     }
+
+    if (showWelcome) return null;
+
     return (
+
         <div className="conta">
-            <h2>{title}</h2>
-            <p>Score: {score}</p>
-            {<p>Top Score:{highScore}</p>}
-            {gameStatus === "won" && <p>You win! 🎉</p>}
-            {gameStatus === "lost" && <p>You lose! Try again.</p>}
+            <div className="score">
+                <h4>Get points by clicking on each image only once.</h4>
+                <p>Score: {score}</p>
+                <p>Top Score: {highScore}</p>
+            </div>
+
+            {gameStatus === "won" && <p id="status">You win! 🎉</p>}
+            {gameStatus === "lost" && <p id="lost">You lose! Try again.</p>}
 
             {(gameStatus === "won" || gameStatus === "lost") && (
-
                 <div>
                     <button onClick={handlePlayAgain}>Play Again</button>
                     <button onClick={handleEasy}>Easy</button>
                     <button onClick={handleMedium}>Medium</button>
                     <button onClick={handleHard}>Hard</button>
                     <button onClick={leaveGame}>QUIT</button>
-
                 </div>
-            )
-            }
+            )}
 
-
-            {<div className="gifs">
-
+            <div className="gifs">
                 {loading ? (
                     <p>Loading...</p>
                 ) : gifs.length > 0 ? (
                     <div className="gifsContainer">
                         {gifs.map(({ id, images }) => (
-                            <img src={images.original.url}
+                            <img
+                                src={images.original.url}
                                 key={id}
-                                alt={`GIF of ${id} `}
+                                alt={`GIF of ${id}`}
                                 style={{ cursor: "pointer" }}
-                                onClick={() => {
-                                    handleGifClick(id)
-                                }}
+                                onClick={() => handleGifClick(id)}
                             />
                         ))}
                     </div>
                 ) : (
                     <p>No GIFs found.</p>
                 )}
-            </div>}
-
-
-        </div >
+            </div>
+        </div>
 
     )
 

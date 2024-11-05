@@ -9,6 +9,10 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true)
   const [title, setTitle] = useState('')
+  const [score, setScore] = useState(0);
+  const [clickedCards, setClickedCard] = useState([])
+  const [gameStatus, setGameStatus] = useState("ongoing")
+
 
 
 
@@ -40,23 +44,48 @@ function App() {
 
 
 
+  function startGame(difficulty, limit) {
 
-  function handleEasy() {
-    getGif(3);
     setShowWelcome(false)
     setTitle("The Disney Memory Game")
+    setScore(0)
+    setClickedCard([])
+    setGameStatus("ongoing");
+    getGif(limit)
+  }
+  const handlePlayAgain = () => {
+    setScore(0);
+    setClickedCard([]);
+    setGameStatus("ongoing");
+    // setGameOver(false)
+    reshuffle();
+    // handleEasy()
+    // handleMedium()
+    // handleMedium()
+  };
+
+  const leaveGame = () => {
+    console.log("quit")
+    setScore(0);
+    setClickedCard([]);
+    setGameStatus("ongoing");
+    setShowWelcome(true)
+    setGifs([])
+
+
+  }
+
+  function handleEasy() {
+    startGame("Easy", 3);
+
   }
 
   function handleMedium() {
-    getGif(6)
-    setShowWelcome(false)
-    setTitle("The Disney Memory Game")
+    startGame("Medium", 6);
   }
 
   function handleHard() {
-    getGif(9)
-    setShowWelcome(false)
-    setTitle("The Disney Memory Game")
+    startGame("hard", 12);
   }
 
   const reshuffle = () => {
@@ -64,35 +93,8 @@ function App() {
     setGifs(shuffled)
   }
 
-  // const handleScoreUpdate = (newScore) => {
-  //   setScore(newScore)
-  //   if (newScore > highScore) {
-  //     setHighScore(newScore)
-  //   }
-  // }
-
-  // const handleClick = (id) => {
-  //   console.log(`clicked ${id}`)
-  //   if (clickedCards.includes(id)) {
-  //     setScore(0)
-  //     setClickedCard([])
-  //   } else {
-  //     const newScore = score + 1;
-  //     setClickedCard([...clickedCards, id])
-  //     reShuffleGifs()
-  //     handleScoreUpdate(newScore)
-  //   }
 
 
-
-  // };
-
-
-
-  // const reShuffleGifs = () => {
-  //   const shuffled = [...gifs].sort(() => Math.random() - 0.5)
-  //   setGifs(shuffled)
-  // }
 
 
 
@@ -101,7 +103,13 @@ function App() {
       {showWelcome && <Welcome handleEasy={handleEasy} handleMedium={handleMedium} handleHard={handleHard} />}
       {/* handleClick={handleClick} */}
       {/* score={score}  highScore={highScore} */}
-      <Cards gifs={gifs} loading={loading} title={title} reshuffle={reshuffle} handleMedium={handleMedium} handleHard={handleHard} handleEasy={handleEasy} />
+      <Cards gifs={gifs} loading={loading} title={title} reshuffle={reshuffle}
+        handleMedium={handleMedium} handleHard={handleHard}
+        handleEasy={handleEasy} score={score} setScore={setScore}
+        clickedCards={clickedCards} setClickedCard={setClickedCard}
+        leaveGame={leaveGame}
+        gameStatus={gameStatus} setGameStatus={setGameStatus}
+        handlePlayAgain={handlePlayAgain} showWelcome={showWelcome} />
 
     </>
   )
